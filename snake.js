@@ -1,27 +1,50 @@
+//sections of a snake
+//Eating food creates new head on snake(link l)
+
 var snakeModel = {
   // State
-  body: ['|||'],
-  head: ['#'],
-  length: function () {
+  body: 2,
+  head: {
+    x: -1,
+    y: 0
+  },
+  length: function() {
     return this.body.length;
   },
   direction: 'left',
-  setDirection: function (keyEvent) {
+  setDirection: function(keyEvent) {
     snakeModel.direction = keyEvent;
   }
 };
+
+
 
 var boardModel = {
   width: 200,
   height: 200,
   food: function () {
     return (Math.random() * 10 + 1);
+  }, 
+  var keys = {
+    38: "up",
+    40: "down",
+    39: "right",
+    37: "left"
   }
 };
 
-var controller = {};
+var controller = {
+  init: function() {
+    snakeModel
+  }
+};
 
-var view = {};
+var view = {
+
+  render: function() {
+
+  }
+};
 
 // What direction the snake is gonna go
 // Where the food will be
