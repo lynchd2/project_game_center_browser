@@ -3,46 +3,55 @@
 
 var snakeModel = {
   // State
-  body: 2,
-  head: {
-    x: -1,
-    y: 0
+  init: function () {
+    setDirection();
+    setTailCoordinates();
   },
-  length: function() {
-    return this.body.length;
+  head: [-2,0],
+  tail: [0,0],
+  setTailCoordinates: function() {
+    snakeModel.tail = coordinates;
   },
-  direction: 'left',
-  setDirection: function(keyEvent) {
-    snakeModel.direction = keyEvent;
+  setDirection: function(coordinates) {
+    snakeModel.head = coordinates;
   }
 };
 
-
-
 var boardModel = {
+  init: function() {
+    this.food();
+  },
   width: 200,
   height: 200,
   food: function () {
     return (Math.random() * 10 + 1);
-  }, 
-  var keys = {
-    38: "up",
-    40: "down",
-    39: "right",
-    37: "left"
+  },
+  keys: {
+    38: [-2,0],
+    40: [0,2],
+    39: [2,0],
+    37: [-2,0]
   }
 };
 
 var controller = {
   init: function() {
-    snakeModel
+    cacheDOM();
+    this.listen();
+    view.render(snakeModel,BoardModel);
+  },
+  listen: function() {
+    $snake.on('keypress',function (ev) {
+      snakeModel.setDirection(ev,boardModel);
+    });
+  },
+  cacheDOM: function() {
+    $snake = $('div#snake');
   }
 };
 
 var view = {
-
   render: function() {
-
   }
 };
 
